@@ -12,8 +12,7 @@ def main():
         tries += 1
         player = int(input('seu palpite: '))
         if player == num:
-            print('parabens!! voce acertou.')
-            print(f'numero de tentativas: {tries}')
+            print('parabens!! voce acertou em {tries} tentativas')
             gameon = False
         elif player > num:
             print('seu palpite foi muito alto!')
