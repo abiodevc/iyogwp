@@ -5,6 +5,7 @@
 # O jogador se aproxima de duas cavernas, uma com um dragão amigável e
 # outra com um dragão faminto, mas ele não sabe qual dragão está em
 # qual caverna. O jogador tem que escolher entre as duas.
+
 from random import choice
 
 def main():
