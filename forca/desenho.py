@@ -49,6 +49,6 @@ F O R C A
  / \  |
       |''']
 
-def forcafun(a, b):
+def forcafun(a, b, c):
     print(forca[a])
-    print(''.join(b))
+    print(f"{''.join(b)}\t\tpontuação: {c}")

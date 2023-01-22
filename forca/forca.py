@@ -1,4 +1,3 @@
-from numpy import empty
 from os import system
 from lista_palavras import listapalavras
 from desenho import forcafun
@@ -7,17 +6,19 @@ from time import sleep
 def main():
     
     gameon = 's'
-
+    pontos = 0
+    
     while gameon == 's' or gameon == 'S':
-        palavra = 'abio'
+        palavra = listapalavras()
         lista_certa = ['_'] * len(palavra)
         lista_errada = []
         lista_todas = []
         homem = 0
+        
 
         while (homem != 6 and ''.join(lista_certa) != palavra):
             system('clear')
-            forcafun(homem, lista_certa)
+            forcafun(homem, lista_certa, pontos)
             tinha = 'nao'
             repetida = 'nao'
             jogador = input('seu chute: ')
@@ -27,6 +28,9 @@ def main():
                     print('voce ja chutou essa letra')
                     sleep(0.75)
                     repetida = 'sim'
+            
+            if jogador == '':
+                return
 
             if repetida != 'sim':
                 for i in range(len(palavra)):
@@ -45,9 +49,10 @@ def main():
             print(f'a palavra era {palavra}')
         elif ''.join(lista_certa) == palavra:
             system('clear')
-            forcafun(homem, lista_certa)
+            forcafun(homem, lista_certa, pontos)
             print('voce ganhou!')
             print(f'a palavra era {palavra}')
+            pontos += 1
 
         gameon = input('Digite S para jogar novamente, ou somente enter para sair: ')
         sleep(1)
