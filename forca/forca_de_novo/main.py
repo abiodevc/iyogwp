@@ -1,24 +1,22 @@
+import funcoes as f
 from os import system
-from lista_palavras import listapalavras
-from desenho import forcafun
 from time import sleep
+from lista_palavras import listapalavras
+
 
 def main():
-    
     gameon = 's'
-    pontos = 0
-    
-    while gameon == 's' or gameon == 'S':
+
+    while gameon.upper() == 'S':
         palavra = listapalavras()
         lista_certa = ['_'] * len(palavra)
         lista_errada = []
         lista_todas = []
         homem = 0
+        pontos = 0
         
-
         while (homem != 6 and ''.join(lista_certa) != palavra):
-            system('clear')
-            forcafun(homem, lista_certa, pontos)
+            f.desenha(homem, lista_certa, pontos)
             tinha = False
             repetida = False
             jogador = input('seu chute: ')
@@ -41,17 +39,21 @@ def main():
                 sleep(0.75)
                 homem += 1
 
-        if homem == 6:
-            print('voce perdeu')
-            print(f'a palavra era {palavra}')
-        elif ''.join(lista_certa) == palavra:
-            system('clear')
-            forcafun(homem, lista_certa, pontos)
-            print('voce ganhou!')
-            print(f'a palavra era {palavra}')
-            pontos += 1
-
-        gameon = input('Digite S para jogar novamente, ou somente enter para sair: ')
-        sleep(1)
+            if homem == 6:
+                print('voce perdeu')
+                print(f'a palavra era {palavra}')
+            elif ''.join(lista_certa) == palavra:
+                f.desenha(homem, lista_certa, pontos)
+                print('voce ganhou!')
+                print(f'a palavra era {palavra}')
+                pontos += 1
+        
+        gameon = input('Jogar novamente? (S/n)--> ')
+        if gameon.upper() != 'N' and gameon.upper() != 'S':
+            while gameon.upper() != 'N' and gameon.upper()!= 'S':
+                print('Escolha inválida!')
+                sleep(1)
+                f.clear()
+                gameon = input('Jogar novamente? (S/n)--> ')
 
 main()
