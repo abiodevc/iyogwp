@@ -1,5 +1,7 @@
 import time
+import sys
 from os import system
+from art import text2art
 
 string = 'stringdeteste'
 stringa = list(string)
@@ -15,7 +17,15 @@ while i <= len(stringa):
         elif stringa[i] != stringa[i].upper():
             stringa[i] = stringa[i].upper()
             res = res + stringa[i]
-        print('\r' + ''.join(stringa), end='')
+        # a = text2art(''.join(stringa))
+        a = '''  ___    ___       ___    ___       ___   _ 
+ / _ \  / _ \  _  / _ \  / _ \  _  / _ \ / |
+| | | || | | |(_)| | | || | | |(_)| | | || |
+| |_| || |_| | _ | |_| || |_| | _ | |_| || |
+ \___/  \___/ (_) \___/  \___/ (_) \___/ |_|'''
+
+        sys.stdout.write(f'\r{a}')
+        sys.stdout.flush()
         time.sleep(0.08)
         i += 1
     else:
